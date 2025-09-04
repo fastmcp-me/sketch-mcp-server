@@ -1,60 +1,62 @@
-# Sketch MCP 服务器
+# Sketch MCP Server
 
-一个基于模型上下文协议（MCP）的 Sketch 文件处理服务器，专为 AI 工具设计，支持智能分析 Sketch 设计文件并生成 Vue 组件代码。
+[中文](./README.md) | **English**
 
-## ✨ 核心特性
+A Sketch file processing server based on Model Context Protocol (MCP), designed for AI tools to intelligently analyze Sketch design files and generate Vue component code.
 
-- 🎨 **Sketch 文件分析**：全面解析 Sketch 文件，提取节点、样式、层级等完整信息
-- 🚀 **Token 智能优化**：最高可减少 90% 的 Token 消耗，大幅降低 AI 调用成本
-- 🔍 **智能查询系统**：16 个专业工具，高效发现和分析设计元素
-- 🎯 **Symbol 组件支持**：完整的 Symbol Master 和 Instance 处理能力
-- 🖼️ **可视化渲染**：将设计节点渲染为 SVG/PNG 图像供 AI 分析
-- 📊 **详细统计分析**：提供文档和节点的全面统计信息
-- 🔧 **CLI 工具支持**：支持 npx 直接调用，无需安装
+## ✨ Core Features
 
-## 📦 安装方式
+- 🎨 **Sketch File Analysis**: Comprehensive parsing of Sketch files, extracting nodes, styles, hierarchies, and complete information
+- 🚀 **Smart Token Optimization**: Up to 90% token consumption reduction, significantly lowering AI call costs
+- 🔍 **Intelligent Query System**: 16 professional tools for efficient discovery and analysis of design elements
+- 🎯 **Symbol Component Support**: Complete Symbol Master and Instance processing capabilities
+- 🖼️ **Visual Rendering**: Render design nodes as SVG/PNG images for AI analysis
+- 📊 **Detailed Statistical Analysis**: Comprehensive statistics for documents and nodes
+- 🔧 **CLI Tool Support**: Support for direct npx calls without installation
 
-### 全局安装（推荐）
+## 📦 Installation
+
+### Global Installation (Recommended)
 
 ```bash
 npm install -g sketch-mcp-server
 ```
 
-### 使用 npx（无需安装）
+### Using npx (No Installation Required)
 
 ```bash
 npx sketch-mcp-server
 ```
 
-### 本地项目安装
+### Local Project Installation
 
 ```bash
 npm install sketch-mcp-server
 ```
 
-## 🚀 快速开始
+## 🚀 Quick Start
 
-### 命令行启动
+### Command Line Launch
 
 ```bash
-# 启动 MCP 服务器（stdio 模式）
+# Start MCP server (stdio mode)
 sketch-mcp-server
 
-# 或使用 npx
+# Or use npx
 npx sketch-mcp-server
 ```
 
-### AI 工具集成
+### AI Tool Integration
 
-本服务器专为以下 AI 开发环境设计：
+This server is designed for the following AI development environments:
 
-- **Trae AI**：作为 MCP 服务器进行 Sketch 文件分析
-- **Cursor**：配置为 MCP 工具实现设计到代码的工作流
-- **Claude Desktop**：用于 Sketch 文件处理和分析
+- **Trae AI**: As an MCP server for Sketch file analysis
+- **Cursor**: Configure as MCP tool for design-to-code workflow
+- **Claude Desktop**: For Sketch file processing and analysis
 
-### Trae AI 配置示例
+### Trae AI Configuration Example
 
-在 Trae AI 中添加 MCP 服务器配置：
+Add MCP server configuration in Trae AI:
 
 ```json
 {
@@ -67,79 +69,79 @@ npx sketch-mcp-server
 }
 ```
 
-## 🛠️ 工具列表
+## 🛠️ Tool List
 
-### 📁 文件加载工具
+### 📁 File Loading Tools
 
-| 工具名称 | 功能描述 |
-|---------|----------|
-| `loadSketchByPath` | 从文件系统加载 Sketch 文件 |
-| `loadSketchByConfig` | 从配置对象加载 Sketch 数据 |
+| Tool Name | Description |
+|-----------|-------------|
+| `loadSketchByPath` | Load Sketch file from file system |
+| `loadSketchByConfig` | Load Sketch data from configuration object |
 
-### 📊 文档结构工具
+### 📊 Document Structure Tools
 
-| 工具名称 | 功能描述 | 优化特性 |
-|---------|----------|----------|
-| `getDocumentStructure` | 获取完整文档层级结构 | 🚀 支持字段过滤和摘要模式 |
-| `getPageStructure` | 获取单个页面结构 | - |
-| `listPages` | 列出所有页面基本信息 | - |
+| Tool Name | Description | Optimization Features |
+|-----------|-------------|----------------------|
+| `getDocumentStructure` | Get complete document hierarchy | 🚀 Supports field filtering and summary mode |
+| `getPageStructure` | Get single page structure | - |
+| `listPages` | List all page basic information | - |
 
-### 🎯 节点查询工具
+### 🎯 Node Query Tools
 
-| 工具名称 | 功能描述 | Token 优化 |
-|---------|----------|------------|
-| `getNodesSummary` | **智能节点摘要** | 🔥 减少 80-90% Token |
-| `listNodes` | 列出节点（支持过滤） | - |
-| `listNodesByPage` | 按页面列出节点 | - |
-| `findNodesByName` | 按名称搜索节点 | - |
+| Tool Name | Description | Token Optimization |
+|-----------|-------------|-------------------|
+| `getNodesSummary` | **Smart Node Summary** | 🔥 80-90% Token Reduction |
+| `listNodes` | List nodes (with filtering support) | - |
+| `listNodesByPage` | List nodes by page | - |
+| `findNodesByName` | Search nodes by name | - |
 
-### 🔍 详细信息工具
+### 🔍 Detailed Information Tools
 
-| 工具名称 | 功能描述 |
-|---------|----------|
-| `getNodeInfo` | 获取单个节点详细信息 |
-| `getMultipleNodeInfo` | 批量获取节点信息（最多100个） |
-| `getNodePosition` | 获取节点位置信息 |
+| Tool Name | Description |
+|-----------|-------------|
+| `getNodeInfo` | Get detailed information for single node |
+| `getMultipleNodeInfo` | Batch get node information (up to 100) |
+| `getNodePosition` | Get node position information |
 
-### 🔄 Symbol 组件工具
+### 🔄 Symbol Component Tools
 
-| 工具名称 | 功能描述 |
-|---------|----------|
-| `getSymbolMasters` | 获取所有 Symbol Master |
-| `getSymbolInstances` | 获取所有 Symbol Instance |
-| `getSymbolMasterBySymbolID` | 根据 Symbol ID 查找 Master |
-| `getSymbolInstanceStyles` | 获取实例样式（含覆盖样式） |
+| Tool Name | Description |
+|-----------|-------------|
+| `getSymbolMasters` | Get all Symbol Masters |
+| `getSymbolInstances` | Get all Symbol Instances |
+| `getSymbolMasterBySymbolID` | Find Master by Symbol ID |
+| `getSymbolInstanceStyles` | Get instance styles (including override styles) |
 
-### 🎨 可视化工具
+### 🎨 Visualization Tools
 
-| 工具名称 | 功能描述 |
-|---------|----------|
-| `renderNodeAsBase64` | 将节点渲染为图像（SVG/PNG） |
+| Tool Name | Description |
+|-----------|-------------|
+| `renderNodeAsBase64` | Render node as image (SVG/PNG) |
 
-## 💡 Token 优化策略
+## 💡 Token Optimization Strategy
 
-### 数据量对比
+### Data Volume Comparison
 
-| 工具/模式 | Token 减少 | 适用场景 |
-|-----------|------------|----------|
-| `getNodesSummary` | 80-90% | 初步分析、了解整体结构 |
-| `getDocumentStructure`（摘要模式） | 70-85% | 快速了解文档结构 |
-| `getDocumentStructure`（字段过滤） | 30-50% | 结构分析 |
-| 完整模式 | 0% | 详细设计需求 |
+| Tool/Mode | Token Reduction | Use Case |
+|-----------|----------------|----------|
+| `getNodesSummary` | 80-90% | Initial analysis, understanding overall structure |
+| `getDocumentStructure` (summary mode) | 70-85% | Quick document structure overview |
+| `getDocumentStructure` (field filtering) | 30-50% | Structural analysis |
+| Full mode | 0% | Detailed design requirements |
 
-### 推荐工作流程
+### Recommended Workflow
 
-1. **🔍 快速分析**：使用 `getNodesSummary` 了解整体设计结构
-2. **📋 结构分析**：使用字段过滤的 `getDocumentStructure` 获取层级关系
-3. **🎯 详细信息**：按需获取特定节点的详细信息
-4. **👁️ 可视化验证**：渲染关键组件确认效果
+1. **🔍 Quick Analysis**: Use `getNodesSummary` to understand overall design structure
+2. **📋 Structure Analysis**: Use field-filtered `getDocumentStructure` to get hierarchical relationships
+3. **🎯 Detailed Information**: Get detailed information for specific nodes as needed
+4. **👁️ Visual Verification**: Render key components to confirm effects
 
-## 📝 使用示例
+## 📝 Usage Examples
 
-### 基础工作流程
+### Basic Workflow
 
 ```javascript
-// 1. 加载 Sketch 文件
+// 1. Load Sketch file
 {
   "name": "loadSketchByPath",
   "arguments": {
@@ -147,7 +149,7 @@ npx sketch-mcp-server
   }
 }
 
-// 2. 获取智能摘要（节省 80-90% Token）
+// 2. Get smart summary (save 80-90% tokens)
 {
   "name": "getNodesSummary",
   "arguments": {
@@ -157,7 +159,7 @@ npx sketch-mcp-server
   }
 }
 
-// 3. 获取特定节点详细信息
+// 3. Get detailed information for specific nodes
 {
   "name": "getMultipleNodeInfo",
   "arguments": {
@@ -165,7 +167,7 @@ npx sketch-mcp-server
   }
 }
 
-// 4. 渲染节点为图像
+// 4. Render node as image
 {
   "name": "renderNodeAsBase64",
   "arguments": {
@@ -175,10 +177,10 @@ npx sketch-mcp-server
 }
 ```
 
-### 高级优化示例
+### Advanced Optimization Examples
 
 ```javascript
-// 使用字段过滤减少数据量
+// Use field filtering to reduce data volume
 {
   "name": "getDocumentStructure",
   "arguments": {
@@ -188,7 +190,7 @@ npx sketch-mcp-server
   }
 }
 
-// 按样式分组的智能摘要
+// Smart summary grouped by style
 {
   "name": "getNodesSummary",
   "arguments": {
@@ -199,63 +201,83 @@ npx sketch-mcp-server
 }
 ```
 
-## 🎯 工具选择指南
+## 🎯 Tool Selection Guide
 
-| 使用需求 | 推荐工具 | Token 效率 | 说明 |
-|----------|----------|------------|------|
-| 了解整体结构 | `getNodesSummary` | ⭐⭐⭐⭐⭐ | 最高效的概览方式 |
-| 分析页面层级 | `getDocumentStructure`（过滤） | ⭐⭐⭐⭐ | 结构化层级信息 |
-| 查找特定节点 | `findNodesByName` | ⭐⭐⭐ | 精确搜索 |
-| 获取详细信息 | `getMultipleNodeInfo` | ⭐⭐ | 批量获取 |
-| 处理 Symbol 组件 | `getSymbolMasters` | ⭐⭐⭐ | 组件化设计 |
-| 可视化确认 | `renderNodeAsBase64` | ⭐⭐ | 直观查看效果 |
+| Use Case | Recommended Tool | Token Efficiency | Description |
+|----------|------------------|------------------|-------------|
+| Understanding overall structure | `getNodesSummary` | ⭐⭐⭐⭐⭐ | Most efficient overview method |
+| Analyzing page hierarchy | `getDocumentStructure` (filtered) | ⭐⭐⭐⭐ | Structured hierarchical information |
+| Finding specific nodes | `findNodesByName` | ⭐⭐⭐ | Precise search |
+| Getting detailed information | `getMultipleNodeInfo` | ⭐⭐ | Batch retrieval |
+| Handling Symbol components | `getSymbolMasters` | ⭐⭐⭐ | Component-based design |
+| Visual confirmation | `renderNodeAsBase64` | ⭐⭐ | Intuitive effect viewing |
 
-## 🔧 开发指南
+## 🔧 Development Guide
 
-### 环境要求
+### Environment Requirements
 
 - Node.js >= 16.0.0
-- npm 或 yarn
+- npm or yarn
 
-### 本地开发
+### Local Development
 
 ```bash
-# 克隆项目
+# Clone project
 git clone https://github.com/mater1996/sketch-mcp-server.git
 cd sketch-mcp-server
 
-# 安装依赖
+# Install dependencies
 npm install
 
-# 构建项目
+# Build project
 npm run build
 
-# 运行测试
+# Run tests
 npm test
 
-# 启动开发服务器
+# Start development server
 npm run start:mcp
 ```
 
-### 可用脚本
+### Available Scripts
 
 ```bash
-npm run build          # 构建 TypeScript 到 JavaScript
-npm run test           # 运行测试套件
-npm run test:coverage  # 运行测试并生成覆盖率报告
-npm run start          # 启动 HTTP 服务器
-npm run start:mcp      # 启动 MCP stdio 服务器
-npm run release        # 发布新版本
-npm run release:dry    # 模拟发布流程
+npm run build          # Build TypeScript to JavaScript
+npm run test           # Run test suite
+npm run test:coverage  # Run tests and generate coverage report
+npm run start          # Start HTTP server
+npm run start:mcp      # Start MCP stdio server
+npm run release        # Release new version
+npm run release:dry    # Simulate release process
 ```
 
-## 📚 API 参考
+## 📚 API Reference
 
-详细的 API 文档请参考 [工具使用指南](./mcp-prompt.txt)。
+For detailed API documentation, please refer to [Tool Usage Guide](./mcp-prompt.txt).
 
-### 开发规范
+### Development Standards
 
-- 使用 TypeScript 编写代码
-- 遵循现有的代码风格
-- 为新功能添加测试
-- 更新相关文档
+- Write code in TypeScript
+- Follow existing code style
+- Add tests for new features
+- Update relevant documentation
+
+## 📄 License
+
+MIT License
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## 📞 Support
+
+If you encounter any issues or have questions, please:
+
+1. Check the [documentation](./mcp-prompt.txt)
+2. Search existing [issues](https://github.com/mater1996/sketch-mcp-server/issues)
+3. Create a new issue if needed
+
+---
+
+**Made with ❤️ for the design-to-code community**
