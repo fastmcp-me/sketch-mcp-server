@@ -1,6 +1,6 @@
 {
   "name": "sketch-mcp-server",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "A server for processing Sketch files and generating code using MCP tools.",
   "main": "dist/server.js",
   "bin": {
