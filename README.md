@@ -1,6 +1,6 @@
 # Sketch MCP Server
 
-[中文](./README.md) | **English**
+**English** | [中文](./README.cn.md)
 
 A Sketch file processing server based on Model Context Protocol (MCP), designed for AI tools to intelligently analyze Sketch design files and generate Vue component code.
 

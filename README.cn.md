@@ -1,6 +1,6 @@
 # Sketch MCP 服务器
 
-**中文** | [English](./README.en.md)
+[English](./README.md) | **中文**
 
 一个基于模型上下文协议（MCP）的 Sketch 文件处理服务器，专为 AI 工具设计，支持智能分析 Sketch 设计文件并生成 Vue 组件代码。
 
