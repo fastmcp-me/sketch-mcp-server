@@ -5,7 +5,7 @@ import fs from 'fs';
 
 describe('SketchConfigAnalyzer - renderNodeAsBase64', () => {
     let analyzer: SketchConfigAnalyzer;
-    const testSketchPath = path.join(__dirname, '../../../sources/test4.sketch');
+    const testSketchPath = path.join(__dirname, '../../test.sketch');
     
     beforeAll(async () => {
         analyzer = new SketchConfigAnalyzer();

@@ -51,7 +51,7 @@ scripts/
 *.test.js
 
 # Sources
-sources/
+
 
 # Uploads
 uploads/
