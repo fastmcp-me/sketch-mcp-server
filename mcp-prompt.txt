@@ -1,0 +1,208 @@
+# Sketch MCP Server 工具使用指南
+
+**🚨 必须严格按照步骤顺序执行，禁止跳过步骤直接生成代码！**
+
+## 📋 基础流程
+1. **载入文件** - `loadSketchByPath`
+2. **获取结构** - `getDocumentStructure` 或 `getNodesSummary`
+3. **按需详情** - 选择合适工具
+4. **生成代码** - 基于真实数据
+
+## 🛠️ 核心工具
+
+### 📁 文件加载
+- `loadSketchByPath` - 载入Sketch文件
+- `loadSketchByConfig` - 载入配置对象
+
+### 📊 文档结构
+- `getDocumentStructure` - 获取文档结构（🚀已优化）
+- `getPageStructure` - 获取页面结构
+- `listPages` - 列出所有页面
+
+### 🎯 节点查询
+- `getNodesSummary` - 智能摘要（🚀新增，减少80-90%Token）
+- `listNodes` - 列出节点
+- `listNodesByPage` - 按页面列出节点
+- `findNodesByName` - 按名称查找
+
+### 🔍 详细信息
+- `getNodeInfo` - 单个节点信息
+- `getMultipleNodeInfo` - 批量节点信息
+- `getNodePosition` - 节点位置
+
+### 🔄 Symbol组件
+- `getSymbolMasters` - 所有Symbol Master
+- `getSymbolInstances` - 所有Symbol Instance
+- `getSymbolMasterBySymbolID` - 根据ID查找
+- `getSymbolInstanceStyles` - 实例样式
+
+### 🎨 可视化
+- `renderNodeAsBase64` - 渲染为图像
+
+## 🚀 Token优化策略
+
+### 数据量对比
+| 工具/模式 | Token减少 | 适用场景 |
+|----------|----------|----------|
+| `getNodesSummary` | 80-90% | 初步分析 |
+| `getDocumentStructure`(摘要) | 70-85% | 快速了解 |
+| `getDocumentStructure`(过滤) | 30-50% | 结构分析 |
+
+### 推荐流程
+
+**阶段1：快速分析（强烈推荐）**
+```json
+{
+  "name": "getNodesSummary",
+  "arguments": {
+    "groupBy": "type",
+    "includeStats": true,
+    "maxSamples": 3
+  }
+}
+```
+
+**阶段2：结构分析（按需）**
+```json
+{
+  "name": "getDocumentStructure",
+  "arguments": {
+    "fields": ["id", "name", "type", "children"],
+    "maxDepth": 2
+  }
+}
+```
+
+**阶段3：详细信息（按需）**
+```json
+{
+  "name": "getMultipleNodeInfo",
+  "arguments": {
+    "nodeIds": ["关键节点ID"]
+  }
+}
+```
+
+## 📝 完整示例
+
+### 第1步：载入文件
+```json
+{
+  "name": "loadSketchByPath",
+  "arguments": {
+    "path": "/path/to/sketch/file.sketch"
+  }
+}
+```
+
+### 第2步：快速分析
+```json
+{
+  "name": "getNodesSummary",
+  "arguments": {
+    "groupBy": "type",
+    "includeStats": true,
+    "maxSamples": 5
+  }
+}
+```
+
+**返回示例**：
+```json
+{
+  "totalPages": 2,
+  "totalNodes": 305,
+  "groups": {
+    "text": { "count": 45, "samples": [...] },
+    "rectangle": { "count": 26, "samples": [...] },
+    "symbolMaster": { "count": 16, "samples": [...] }
+  },
+  "statistics": {
+    "largestGroup": { "key": "text", "percentage": "14.8%" }
+  }
+}
+```
+
+### 第3步：按需获取
+
+**情况A：特定类型节点**
+```json
+{
+  "name": "listNodes",
+  "arguments": {
+    "type": "text",
+    "limit": 10
+  }
+}
+```
+
+**情况B：Symbol组件**
+```json
+{
+  "name": "getSymbolMasters",
+  "arguments": {}
+}
+```
+
+**情况C：可视化效果**
+```json
+{
+  "name": "renderNodeAsBase64",
+  "arguments": {
+    "nodeId": "按钮节点ID",
+    "format": "svg"
+  }
+}
+```
+
+### 第4步：生成Vue组件
+基于真实数据生成代码
+
+## 🎯 工具选择指南
+
+| 需求 | 推荐工具 | Token效率 |
+|------|----------|----------|
+| 整体结构 | `getNodesSummary` | ⭐⭐⭐⭐⭐ |
+| 页面层级 | `getDocumentStructure`(过滤) | ⭐⭐⭐⭐ |
+| 查找节点 | `findNodesByName` | ⭐⭐⭐ |
+| 详细信息 | `getMultipleNodeInfo` | ⭐⭐ |
+| Symbol组件 | `getSymbolMasters` | ⭐⭐⭐ |
+| 可视化 | `renderNodeAsBase64` | ⭐⭐ |
+
+## ⚠️ 重要注意
+
+### 🚫 严格禁止
+- 跳过载入步骤
+- 使用假数据
+- 忽略Token优化
+
+### ✅ 最佳实践
+- 优先使用摘要工具
+- 按需获取详细信息
+- 合理使用字段过滤
+- 善用Symbol工具
+- 适时使用可视化
+
+### 🔧 优化参数
+
+**getDocumentStructure优化**：
+- `summaryMode`: true - 摘要模式
+- `fields`: ["id", "name", "type"] - 指定字段
+- `excludeFields`: ["style", "position"] - 排除字段
+- `maxDepth`: 2 - 限制深度
+
+**getNodesSummary参数**：
+- `groupBy`: "type"|"style"|"position"|"size"
+- `includeStats`: 统计分析
+- `maxSamples`: 每组样本数
+- `pageId`: 限制页面
+
+## 🎉 总结
+
+通过合理使用工具和Token优化功能：
+- 减少API成本（最高90%）
+- 提高分析效率
+- 获得精准数据
+- 生成高质量代码
+
+**核心原则：智能选择工具，优化Token使用，基于真实数据生成代码！**

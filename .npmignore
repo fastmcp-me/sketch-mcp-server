@@ -1,0 +1,60 @@
+# Source files
+src/
+test/
+
+# Development files
+*.ts
+!*.d.ts
+tsconfig.json
+jest.config.js
+
+# IDE files
+.vscode/
+.idea/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Coverage directory used by tools like istanbul
+coverage/
+
+# nyc test coverage
+.nyc_output
+
+# Dependency directories
+node_modules/
+
+# Optional npm cache directory
+.npm
+
+# Optional REPL history
+.node_repl_history
+
+# Output of 'npm pack'
+*.tgz
+
+# Yarn Integrity file
+.yarn-integrity
+
+# dotenv environment variables file
+.env
+
+# Scripts
+scripts/
+
+# Test files
+*.test.ts
+*.test.js
+
+# Sources
+sources/
+
+# Uploads
+uploads/
+
+# Public
+public/

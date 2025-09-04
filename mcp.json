@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "sketch-mcp-server": {
+      "command": "npx",
+      "args": [
+        "ts-node",
+        "src/mcp-stdio.ts"
+      ],
+      "cwd": ".",
+      "env": {
+        "NODE_ENV": "development"
+      }
+    }
+  }
+}
