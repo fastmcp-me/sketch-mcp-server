@@ -221,7 +221,7 @@ npx sketch-mcp-server
 
 ```bash
 # 克隆项目
-git clone xxx
+git clone https://github.com/mater1996/sketch-mcp-server.git
 cd sketch-mcp-server
 
 # 安装依赖

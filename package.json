@@ -60,12 +60,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "xxx"
+    "url": "https://github.com/mater1996/sketch-mcp-server"
   },
   "bugs": {
-    "url": "xxx"
+    "url": "https://github.com/mater1996/sketch-mcp-server/issue"
   },
-  "homepage": "xxx",
+  "homepage": "https://github.com/mater1996/sketch-mcp-server",
   "engines": {
     "node": ">=16.0.0"
   }
